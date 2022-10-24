@@ -5,7 +5,7 @@ import logging
 import werkzeug.wrappers
 
 from odoo import http
-from odoo.addons.actech_switchboard.common import invalid_response, valid_response
+from odoo.addons.contact_rest_api.common import invalid_response, valid_response
 from odoo.exceptions import AccessDenied, AccessError
 from odoo.http import request
 
