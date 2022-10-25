@@ -19,5 +19,5 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'contact_rest_api'],
+    'depends': ['actech_contacts', 'actech_sms'],
 }

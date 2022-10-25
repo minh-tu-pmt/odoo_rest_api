@@ -1,4 +1,3 @@
-from crypt import methods
 import json
 import logging
 
@@ -17,7 +16,7 @@ class AccessToken(http.Controller):
 
     def __init__(self):
 
-        self._token = request.env["switchboard.access.token"]
+        self._token = request.env["contact.access.token"]
 
     @http.route("/contact/api/register", methods=["POST"], type="http", auth="none", csrf=False)
     def register(self):
@@ -27,7 +26,7 @@ class AccessToken(http.Controller):
         """
             params: SDT + password
         """
-        _token = request.env["switchboard.access.token"]
+        _token = request.env["contact.access.token"]
 
         # payload = request.httprequest.data.decode()
         # payload = json.loads(payload)
@@ -54,7 +53,7 @@ class AccessToken(http.Controller):
                     "missing error", "either of the following are missing [company_name, secret_key]", 403,
                 )
         try:
-            company = request.env['switchboard.partner.company'].sudo().search([('name', '=', company_name),('secret_key', '=', secret_key)], order="id DESC", limit=1)
+            company = request.env['contact.user'].sudo().search([('name', '=', company_name),('secret_key', '=', secret_key)], order="id DESC", limit=1)
             if not company:
                 raise Exception('Invalid company_name or secret_key!')
         except Exception as e:
@@ -77,7 +76,7 @@ class AccessToken(http.Controller):
     def delete(self, **post):
         """Delete a given token"""
         limit = 1
-        token = request.env["switchboard.access.token"]
+        token = request.env["contact.access.token"]
         access_token = post.get("access_token")
         access_token = token.search([("token", "=", access_token)], limit)
         if not access_token:
