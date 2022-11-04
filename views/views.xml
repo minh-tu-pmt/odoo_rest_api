@@ -1,7 +1,7 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-<!--
+     explicit list view definition
+
     <record model="ir.ui.view" id="contact_rest_api.list">
       <field name="name">contact_rest_api list</field>
       <field name="model">contact_rest_api.contact_rest_api</field>
@@ -13,19 +13,18 @@
         </tree>
       </field>
     </record>
--->
+
 
     <!-- actions opening views on models -->
-<!--
+
     <record model="ir.actions.act_window" id="contact_rest_api.action_window">
       <field name="name">contact_rest_api window</field>
       <field name="res_model">contact_rest_api.contact_rest_api</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
 
     <!-- server action to the one above -->
-<!--
+
     <record model="ir.actions.server" id="contact_rest_api.action_server">
       <field name="name">contact_rest_api server</field>
       <field name="model_id" ref="model_contact_rest_api_contact_rest_api"/>
@@ -38,23 +37,21 @@
         }
       </field>
     </record>
--->
 
     <!-- Top menu item -->
-<!--
+
     <menuitem name="contact_rest_api" id="contact_rest_api.menu_root"/>
--->
+
     <!-- menu categories -->
-<!--
+
     <menuitem name="Menu 1" id="contact_rest_api.menu_1" parent="contact_rest_api.menu_root"/>
     <menuitem name="Menu 2" id="contact_rest_api.menu_2" parent="contact_rest_api.menu_root"/>
--->
+
     <!-- actions -->
-<!--
+
     <menuitem name="List" id="contact_rest_api.menu_1_list" parent="contact_rest_api.menu_1"
               action="contact_rest_api.action_window"/>
     <menuitem name="Server to list" id="contact_rest_api" parent="contact_rest_api.menu_2"
               action="contact_rest_api.action_server"/>
--->
   </data>
 </odoo>
