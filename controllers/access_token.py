@@ -17,10 +17,6 @@ class AccessToken(http.Controller):
     def __init__(self):
 
         self._token = request.env["contact.access.token"]
-
-    @http.route("/contact/api/register", methods=["POST"], type="http", auth="none", csrf=False)
-    def register(self):
-        pass
     @http.route("/switchboard/api/auth/token", methods=["POST"], type="http", auth="none", csrf=False)
     def token(self, **post):
         """

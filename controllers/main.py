@@ -2,7 +2,7 @@ import functools
 import json
 import logging
 import re
-
+from odoo import api, fields, models, _
 from odoo import http
 from odoo.addons.contact_rest_api.common import (extract_arguments, invalid_response,
                                         valid_response)
@@ -58,7 +58,7 @@ class APIController(http.Controller):
             response_data['website'] = data.website or None
             response_data['note'] = data.note or None
             return valid_response(response_data)
-        return invalid_response("Not found!", message="Phone number: %s not found!"%phone_number, status=404)
+        return invalid_response("Not found!", message="Phone number: %s not found!" %phone_number, status=404)
     
     # @validate_token
     @http.route("/contact/api/detail", methods=["POST"], type="http", auth="none", csrf=False)

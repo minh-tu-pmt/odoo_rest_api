@@ -21,13 +21,14 @@ class ContactUser(models.Model):
     _name = 'contact.user'
     _description = 'Contact User'
 
-    phone_number = fields.Char(string="Phone", required = True)
+    phone_number = fields.Char(string="Phone", required = True, index=True)
     password = fields.Char(string="Password")
     name = fields.Char(string="Name")
     otp = fields.Char(string="OTP")
     otp_expired_at = fields.Datetime(string="OTP expired")
-    active = fields.Boolean(string="Active")
-    expired_at = fields.Date(string="Date expired")
+    code = fields.Char(string="Code")
+    # active = fields.Boolean(string="Active")
+    expired_at = fields.Datetime(string="Date expired")
     access_tokens = fields.One2many('contact.access.token', 'user_id', string="access tokens")
 
 class AccessToken(models.Model):
@@ -38,7 +39,6 @@ class AccessToken(models.Model):
     expires = fields.Datetime(string="Expires", required=True)
     scope = fields.Char(string="Scope")
     user_id = fields.Many2one('contact.user', string="")
-    
     
     def find_one_or_create_token(self, user_id=None, create=False):
         if not user_id:
